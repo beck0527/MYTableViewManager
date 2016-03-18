@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *mutableSections;
 @property (nonatomic, assign) CGFloat defaultTableViewSectionHeight;
+@property (atomic, assign) BOOL dataSourceLocked;
 
 @end
 
@@ -114,11 +115,32 @@
     return cell;
 }
 
+- (void)tableViewLockDataSource:(ASTableView *)tableView
+{
+    self.dataSourceLocked = YES;
+}
+
+- (void)tableViewUnlockDataSource:(ASTableView *)tableView
+{
+    self.dataSourceLocked = NO;
+}
+
 #pragma mark - 
 #pragma mark - ASTableViewDelegate.
 
-- (NSArray *)sectionIndexTitlesForTableView:(ASTableView *)tableView
-{
+- (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView {
+    if ([self.delegate respondsToSelector:@selector(shouldBatchFetchForTableView:)]) {
+        return [self.delegate shouldBatchFetchForTableView:tableView];
+    }
+    return NO;
+}
+- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context {
+    if ([self.delegate respondsToSelector:@selector(tableView:willBeginBatchFetchWithContext:)]) {
+        [self.delegate tableView:tableView willBeginBatchFetchWithContext:context];
+    }
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(ASTableView *)tableView {
     NSMutableArray *titles;
     for (MYTableViewSection *section in self.mutableSections) {
         if (section.indexTitle) {
@@ -224,6 +246,13 @@
         MYTableViewItem *item = [section.items objectAtIndex:indexPath.row];
         if (item.insertionHandler)
             item.insertionHandler(item);
+    }
+}
+
+- (void)tableView:(ASTableView *)tableView willDisplayNodeForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(my_tableView:willLoadCell:forRowAtIndexPath:)]) {
+        MYTableViewCell *cell = (MYTableViewCell *)[tableView nodeForRowAtIndexPath:indexPath];
+        [self.delegate my_tableView:tableView willLoadCell:cell forRowAtIndexPath:indexPath];
     }
 }
 
@@ -447,6 +476,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [_tableView beginUpdates];
     MYTableViewSection *section = [self.mutableSections objectAtIndex:indexPath.section];
     id item = [section.items objectAtIndex:indexPath.row];
     if ([item respondsToSelector:@selector(setSelectionHandler:)]) {
@@ -459,6 +490,8 @@
     //
     if ([self.delegate conformsToProtocol:@protocol(UITableViewDelegate)] && [self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)])
         [self.delegate tableView:tableView didSelectRowAtIndexPath:indexPath];
+    
+    [_tableView endUpdates];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
