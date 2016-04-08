@@ -145,16 +145,6 @@
         _mediaNode.cornerRadius = 4.0;
         _mediaNode.URL = [NSURL URLWithString:imageURL];
         _mediaNode.delegate = self;
-        _mediaNode.imageModificationBlock = ^UIImage *(UIImage *image) {
-            UIImage *modifiedImage;
-            CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-            UIGraphicsBeginImageContextWithOptions(image.size, false, [[UIScreen mainScreen] scale]);
-            [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:8.0] addClip];
-            [image drawInRect:rect];
-            modifiedImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            return modifiedImage;
-        };
         [self addSubnode:_mediaNode];
     }
     
