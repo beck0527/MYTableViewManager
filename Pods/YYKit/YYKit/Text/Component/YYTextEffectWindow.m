@@ -21,6 +21,16 @@
 
 + (instancetype)sharedWindow {
     static YYTextEffectWindow *one = nil;
+    if (one == nil) {
+        // iOS 9 compatible
+        NSString *mode = [NSRunLoop currentRunLoop].currentMode;
+        if (mode.length == 27 &&
+            [mode hasPrefix:@"UI"] &&
+            [mode hasSuffix:@"InitializationRunLoopMode"]) {
+            return nil;
+        }
+    }
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (![UIApplication isAppExtension]) {
@@ -40,7 +50,7 @@
 }
 
 - (UIViewController *)rootViewController {
-    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+    for (UIWindow *window in [[UIApplication sharedExtensionApplication] windows]) {
         if (self == window) continue;
         if (window.hidden) continue;
         UIViewController *topViewController = window.rootViewController;
@@ -298,7 +308,7 @@
     if (mag.type == YYTextMagnifierTypeRanged) {
         mag.alpha = 0;
     }
-    NSTimeInterval time = mag.type == YYTextMagnifierTypeCaret ? 0.06 : 0.1;
+    NSTimeInterval time = mag.type == YYTextMagnifierTypeCaret ? 0.08 : 0.1;
     [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
         if (mag.type == YYTextMagnifierTypeCaret) {
             CGPoint newCenter = CGPointMake(0, -mag.fitSize.height / 2);
@@ -391,7 +401,11 @@
         }
     }
     CGPoint center = [dot convertPoint:CGPointMake(CGRectGetWidth(dot.frame) / 2, CGRectGetHeight(dot.frame) / 2) toViewOrWindow:self];
-    dot.mirror.center = center;
+    if (isnan(center.x) || isnan(center.y) || isinf(center.x) || isinf(center.y)) {
+        dot.mirror.hidden = YES;
+    } else {
+        dot.mirror.center = center;
+    }
 }
 
 - (void)showSelectionDot:(YYTextSelectionView *)selection {

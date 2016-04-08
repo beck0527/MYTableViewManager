@@ -35,6 +35,7 @@ typedef struct {
 extern ASRelativeDimension const ASRelativeDimensionUnconstrained;
 
 ASDISPLAYNODE_EXTERN_C_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark ASRelativeDimension
 
@@ -57,6 +58,9 @@ extern CGFloat ASRelativeDimensionResolve(ASRelativeDimension dimension, CGFloat
 
 extern ASSizeRange ASSizeRangeMake(CGSize min, CGSize max);
 
+/** Creates an ASSizeRange with the provided size as both min and max */
+extern ASSizeRange ASSizeRangeMakeExactSize(CGSize size);
+
 /** Clamps the provided CGSize between the [min, max] bounds of this ASSizeRange. */
 extern CGSize ASSizeRangeClamp(ASSizeRange sizeRange, CGSize size);
 
@@ -70,4 +74,5 @@ extern BOOL ASSizeRangeEqualToSizeRange(ASSizeRange lhs, ASSizeRange rhs);
 
 extern NSString *NSStringFromASSizeRange(ASSizeRange sizeRange);
 
+NS_ASSUME_NONNULL_END
 ASDISPLAYNODE_EXTERN_C_END
