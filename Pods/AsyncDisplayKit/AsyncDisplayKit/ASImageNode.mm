@@ -100,12 +100,15 @@
   _cropDisplayBounds = CGRectNull;
   _placeholderColor = ASDisplayNodeDefaultPlaceholderColor();
   
+<<<<<<< HEAD
   if ([ASImageNode shouldShowImageScalingOverlay]) {
     _debugLabelNode = [[ASTextNode alloc] init];
     _debugLabelNode.layerBacked = YES;
     [self addSubnode:_debugLabelNode];
   }
 
+=======
+>>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
   return self;
 }
 
@@ -144,6 +147,17 @@
     [self invalidateCalculatedLayout];
     if (image) {
       [self setNeedsDisplay];
+<<<<<<< HEAD
+=======
+      
+      if ([ASImageNode shouldShowImageScalingOverlay]) {
+        ASPerformBlockOnMainThread(^{
+          _debugLabelNode = [[ASTextNode alloc] init];
+          _debugLabelNode.layerBacked = YES;
+          [self addSubnode:_debugLabelNode];
+        });
+      }
+>>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
     } else {
       self.contents = nil;
     }

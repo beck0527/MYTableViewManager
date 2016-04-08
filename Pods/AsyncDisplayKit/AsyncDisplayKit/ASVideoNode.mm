@@ -334,7 +334,12 @@
 - (void)setMuted:(BOOL)muted
 {
   ASDN::MutexLocker l(_videoLock);
+<<<<<<< HEAD
 
+=======
+  
+  _player.muted = muted;
+>>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
   _muted = muted;
 }
 

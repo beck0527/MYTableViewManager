@@ -17,7 +17,11 @@
 #import <AsyncDisplayKit/ASDisplayNodeExtras.h>
 
 #import "ASTextKitCoreTextAdditions.h"
+<<<<<<< HEAD
 #import "ASTextKitHelpers.h"
+=======
+#import "ASTextKitComponents.h"
+>>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
 #import "ASTextKitFontSizeAdjuster.h"
 #import "ASTextKitRenderer.h"
 #import "ASTextKitRenderer+Positioning.h"
@@ -278,6 +282,7 @@ static NSArray *DefaultLinkAttributeNames = @[ NSLinkAttributeName ];
     // incorrect origin.
     _constrainedSize = CGSizeMake(-INFINITY, -INFINITY);
     [self _invalidateRenderer];
+<<<<<<< HEAD
   }
 }
 
@@ -353,6 +358,83 @@ static NSArray *DefaultLinkAttributeNames = @[ NSLinkAttributeName ];
 
 #pragma mark - Modifying User Text
 
+=======
+  }
+}
+
+#pragma mark - Layout and Sizing
+
+- (BOOL)_needInvalidateRendererForBoundsSize:(CGSize)boundsSize
+{
+  if (!_renderer) {
+    return YES;
+  }
+  
+  // If the size is not the same as the constraint we provided to the renderer, start out assuming we need
+  // a new one.  However, there are common cases where the constrained size doesn't need to be the same as calculated.
+  CGSize rendererConstrainedSize = _renderer.constrainedSize;
+  
+  if (CGSizeEqualToSize(boundsSize, rendererConstrainedSize)) {
+    return NO;
+  } else {
+    // It is very common to have a constrainedSize with a concrete, specific width but +Inf height.
+    // In this case, as long as the text node has bounds as large as the full calculatedLayout suggests,
+    // it means that the text has all the room it needs (as it was not vertically bounded).  So, we will not
+    // experience truncation and don't need to recreate the renderer with the size it already calculated,
+    // as this would essentially serve to set its constrainedSize to be its calculatedSize (unnecessary).
+    ASLayout *layout = self.calculatedLayout;
+    if (layout != nil && CGSizeEqualToSize(boundsSize, layout.size)) {
+      if (boundsSize.width != rendererConstrainedSize.width) {
+        // Don't bother changing _constrainedSize, as ASDisplayNode's -measure: method would have a cache miss
+        // and ask us to recalculate layout if it were called with the same calculatedSize that got us to this point!
+        _renderer.constrainedSize = boundsSize;
+      }
+      return NO;
+    } else {
+      return YES;
+    }
+  }
+}
+
+- (void)calculatedLayoutDidChange
+{
+  ASLayout *layout = self.calculatedLayout;
+  if (layout != nil) {
+    _constrainedSize = layout.size;
+    _renderer.constrainedSize = layout.size;
+  }
+}
+
+- (CGSize)calculateSizeThatFits:(CGSize)constrainedSize
+{
+  ASDisplayNodeAssert(constrainedSize.width >= 0, @"Constrained width for text (%f) is too  narrow", constrainedSize.width);
+  ASDisplayNodeAssert(constrainedSize.height >= 0, @"Constrained height for text (%f) is too short", constrainedSize.height);
+  
+  _constrainedSize = constrainedSize;
+  
+  // Instead of invalidating the renderer, in case this is a new call with a different constrained size,
+  // just update the size of the NSTextContainer that is owned by the renderer's internal context object.
+  [self _renderer].constrainedSize = _constrainedSize;
+
+  [self setNeedsDisplay];
+  
+  CGSize size = [[self _renderer] size];
+  if (self.attributedString.length > 0) {
+    CGFloat screenScale = ASScreenScale();
+    self.ascender = round([[_attributedString attribute:NSFontAttributeName atIndex:0 effectiveRange:NULL] ascender] * screenScale)/screenScale;
+    self.descender = round([[_attributedString attribute:NSFontAttributeName atIndex:_attributedString.length - 1 effectiveRange:NULL] descender] * screenScale)/screenScale;
+    if (_renderer.currentScaleFactor > 0 && _renderer.currentScaleFactor < 1.0) {
+      // while not perfect, this is a good estimate of what the ascender of the scaled font will be.
+      self.ascender *= _renderer.currentScaleFactor;
+      self.descender *= _renderer.currentScaleFactor;
+    }
+  }
+  return size;
+}
+
+#pragma mark - Modifying User Text
+
+>>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
 - (void)setAttributedString:(NSAttributedString *)attributedString
 {
   if (attributedString == nil) {
@@ -364,6 +446,12 @@ static NSArray *DefaultLinkAttributeNames = @[ NSLinkAttributeName ];
   }
 
   _attributedString = ASCleanseAttributedStringOfCoreTextAttributes(attributedString);
+    
+  if (_attributedString.length > 0) {
+    CGFloat screenScale = ASScreenScale();
+    self.ascender = round([[_attributedString attribute:NSFontAttributeName atIndex:0 effectiveRange:NULL] ascender] * screenScale)/screenScale;
+    self.descender = round([[_attributedString attribute:NSFontAttributeName atIndex:_attributedString.length - 1 effectiveRange:NULL] descender] * screenScale)/screenScale;
+  }
 
   // Sync the truncation string with attributes from the updated _attributedString
   // Without this, the size calculation of the text with truncation applied will

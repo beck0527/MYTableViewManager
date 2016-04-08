@@ -279,7 +279,11 @@
 #pragma mark - Layout
 - (void)setSnapshotSizeWithReloadIfNeeded:(CGSize)snapshotSize
 {
+<<<<<<< HEAD
   if (!CGSizeEqualToSize(self.options.size, snapshotSize)) {
+=======
+  if (snapshotSize.height > 0 && snapshotSize.width > 0 && !CGSizeEqualToSize(self.options.size, snapshotSize)) {
+>>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
     _options.size = snapshotSize;
     if (_snapshotter) {
       [self destroySnapshotter];
