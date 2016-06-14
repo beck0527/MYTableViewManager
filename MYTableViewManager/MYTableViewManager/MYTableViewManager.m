@@ -223,7 +223,7 @@
                 
                 for (NSInteger i = indexPath.row; i < section.items.count; i++) {
                     MYTableViewItem *afterItem = [[section items] objectAtIndex:i];
-                    MYTableViewCell *cell = (MYTableViewCell *)[tableView cellForRowAtIndexPath:afterItem.indexPath];
+                    MYTableViewCell *cell = (MYTableViewCell *)[(ASTableView *)tableView nodeForRowAtIndexPath:afterItem.indexPath];
                     cell.rowIndex--;
                 }
             });
@@ -235,7 +235,7 @@
             
             for (NSInteger i = indexPath.row; i < section.items.count; i++) {
                 MYTableViewItem *afterItem = [[section items] objectAtIndex:i];
-                MYTableViewCell *cell = (MYTableViewCell *)[tableView cellForRowAtIndexPath:afterItem.indexPath];
+                MYTableViewCell *cell = (MYTableViewCell *)[(ASTableView *)tableView nodeForRowAtIndexPath:afterItem.indexPath];
                 cell.rowIndex--;
             }
         }

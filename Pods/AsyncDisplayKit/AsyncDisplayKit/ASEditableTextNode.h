@@ -1,10 +1,12 @@
-/* Copyright (c) 2014-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+//
+//  ASEditableTextNode.h
+//  AsyncDisplayKit
+//
+//  Copyright (c) 2014-present, Facebook, Inc.  All rights reserved.
+//  This source code is licensed under the BSD-style license found in the
+//  LICENSE file in the root directory of this source tree. An additional grant
+//  of patent rights can be found in the PATENTS file in the same directory.
+//
 
 #import <AsyncDisplayKit/ASDisplayNode.h>
 #import <AsyncDisplayKit/ASTextKitComponents.h>
@@ -19,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ASEditableTextNode : ASDisplayNode
 
-<<<<<<< HEAD
-=======
 /**
  * @abstract Initializes an editable text node using default TextKit components.
  *
@@ -39,7 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithTextKitComponents:(ASTextKitComponents *)textKitComponents
              placeholderTextKitComponents:(ASTextKitComponents *)placeholderTextKitComponents;
 
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
 //! @abstract The text node's delegate, which must conform to the <ASEditableTextNodeDelegate> protocol.
 @property (nonatomic, readwrite, weak) id <ASEditableTextNodeDelegate> delegate;
 

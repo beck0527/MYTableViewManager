@@ -1,26 +1,21 @@
 PODS:
-<<<<<<< HEAD
-  - AsyncDisplayKit (1.9.7.1):
-    - AsyncDisplayKit/PINRemoteImage (= 1.9.7.1)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.7.1)
-  - AsyncDisplayKit/PINRemoteImage (1.9.7.1):
-=======
-  - AsyncDisplayKit (1.9.8):
-    - AsyncDisplayKit/PINRemoteImage (= 1.9.8)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.8)
-  - AsyncDisplayKit/PINRemoteImage (1.9.8):
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
+  - AsyncDisplayKit (1.9.80):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.80)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.80)
+  - AsyncDisplayKit/Core (1.9.80):
     - AsyncDisplayKit/ASDealloc2MainObject
-    - PINRemoteImage/iOS (>= 2.1.2)
+  - AsyncDisplayKit/PINRemoteImage (1.9.80):
+    - AsyncDisplayKit/Core
+    - PINRemoteImage/iOS (>= 3.0.0-beta.2)
   - PINCache (2.2.2)
-  - PINRemoteImage/Core (2.1.2):
+  - PINRemoteImage/Core (3.0.0-beta.2):
     - PINCache (>= 2.1)
-  - PINRemoteImage/iOS (2.1.2):
+  - PINRemoteImage/iOS (3.0.0-beta.2):
     - PINRemoteImage/Core
   - pop (1.0.9)
-  - YYKit (1.0.4):
-    - YYKit/no-arc (= 1.0.4)
-  - YYKit/no-arc (1.0.4)
+  - YYKit (1.0.7):
+    - YYKit/no-arc (= 1.0.7)
+  - YYKit/no-arc (1.0.7)
 
 DEPENDENCIES:
   - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`)
@@ -33,18 +28,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AsyncDisplayKit:
-    :commit: ccddb36ed9b9b5d5fcd4321fa2fab6591747929c
+    :commit: c857e809f41eea68eb78856a91dffe34aa8abaa2
     :git: https://github.com/facebook/AsyncDisplayKit.git
 
 SPEC CHECKSUMS:
-<<<<<<< HEAD
-  AsyncDisplayKit: 2b52f841e384e7326d4f59323b1bf35d00696e17
-=======
-  AsyncDisplayKit: a0a50ce59bdad7cf2fbd9dfda35c03ce60d98469
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
+  AsyncDisplayKit: ab57b10cd058797015c77be10407f3dc13027c85
   PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
-  PINRemoteImage: 2ce3f1fcc52f0360a3821f91f1a1bc653c5d2338
+  PINRemoteImage: 197554c5ba57a6ae90f5db441651180039fc9062
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  YYKit: 71f7e48cc5de6c69b5c35fee4d3978dac3267041
+  YYKit: 843d1b26e20b82c695790c9a89907eaa1e99907f
 
 COCOAPODS: 0.39.0

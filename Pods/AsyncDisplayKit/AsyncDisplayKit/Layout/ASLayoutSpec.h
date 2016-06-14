@@ -1,12 +1,12 @@
-/*
- *  Copyright (c) 2014-present, Facebook, Inc.
- *  All rights reserved.
- *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
- *
- */
+//
+//  ASLayoutSpec.h
+//  AsyncDisplayKit
+//
+//  Copyright (c) 2014-present, Facebook, Inc.  All rights reserved.
+//  This source code is licensed under the BSD-style license found in the
+//  LICENSE file in the root directory of this source tree. An additional grant
+//  of patent rights can be found in the PATENTS file in the same directory.
+//
 
 #import <AsyncDisplayKit/ASLayoutable.h>
 #import <AsyncDisplayKit/ASAsciiArtBoxCreator.h>
@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init;
 
+/**
+ * Parent of the layout spec
+ */
 @property (nullable, nonatomic, weak) id<ASLayoutable> parent;
 
 /**
@@ -97,8 +100,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable id<ASLayoutable>)childForIdentifier:(NSString *)identifier;
 
-/** Returns all children added to this layout spec. */
-- (NSArray<id<ASLayoutable>> *)children;
+/**
+ * Returns all children added to this layout spec.
+ */
+- (nullable NSArray<id<ASLayoutable>> *)children;
 
 @end
 

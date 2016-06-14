@@ -1,15 +1,15 @@
-/* Copyright (c) 2014-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+//
+//  ASTextKitComponents.h
+//  AsyncDisplayKit
+//
+//  Copyright (c) 2014-present, Facebook, Inc.  All rights reserved.
+//  This source code is licensed under the BSD-style license found in the
+//  LICENSE file in the root directory of this source tree. An additional grant
+//  of patent rights can be found in the PATENTS file in the same directory.
+//
 
 #import <UIKit/UIKit.h>
 #import <AsyncDisplayKit/ASBaseDefines.h>
-
-NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,10 +36,6 @@ ASDISPLAYNODE_INLINE CGSize ceilSizeValue(CGSize s)
  @return An `ASTextKitComponents` containing the created components. The text view component will be nil.
  @discussion The returned components will be hooked up together, so they are ready for use as a system upon return.
  */
-<<<<<<< HEAD:Pods/AsyncDisplayKit/AsyncDisplayKit/TextKit/ASTextKitHelpers.h
-+ (ASTextKitComponents *)componentsWithAttributedSeedString:(nullable NSAttributedString *)attributedSeedString
-                                          textContainerSize:(CGSize)textContainerSize;
-=======
 + (instancetype)componentsWithAttributedSeedString:(nullable NSAttributedString *)attributedSeedString
                                  textContainerSize:(CGSize)textContainerSize;
 
@@ -54,7 +50,6 @@ ASDISPLAYNODE_INLINE CGSize ceilSizeValue(CGSize s)
 + (instancetype)componentsWithTextStorage:(NSTextStorage *)textStorage
                         textContainerSize:(CGSize)textContainerSize
                             layoutManager:(NSLayoutManager *)layoutManager;
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7:Pods/AsyncDisplayKit/AsyncDisplayKit/TextKit/ASTextKitComponents.h
 
 /**
  @abstract Returns the bounding size for the text view's text.

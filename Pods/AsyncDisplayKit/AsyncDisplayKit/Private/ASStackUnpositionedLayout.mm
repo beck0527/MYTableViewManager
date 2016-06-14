@@ -1,12 +1,12 @@
-/*
- *  Copyright (c) 2014-present, Facebook, Inc.
- *  All rights reserved.
- *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
- *
- */
+//
+//  ASStackUnpositionedLayout.mm
+//  AsyncDisplayKit
+//
+//  Copyright (c) 2014-present, Facebook, Inc.  All rights reserved.
+//  This source code is licensed under the BSD-style license found in the
+//  LICENSE file in the root directory of this source tree. An additional grant
+//  of patent rights can be found in the PATENTS file in the same directory.
+//
 
 #import "ASStackUnpositionedLayout.h"
 
@@ -115,12 +115,7 @@ static CGFloat computeStackDimensionSum(const std::vector<ASStackUnpositionedIte
                                                   children.empty() ? 0 : style.spacing * (children.size() - 1),
                                                   [&](CGFloat x, const ASStackUnpositionedItem &l) {
                                                     const id<ASLayoutable> child = l.child;
-<<<<<<< HEAD
-                                                    const ASLayoutOptions *layoutOptions = child.layoutOptions;
-                                                    return x + layoutOptions.spacingBefore + layoutOptions.spacingAfter;
-=======
                                                     return x + child.spacingBefore + child.spacingAfter;
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
                                                   });
 
   // Sum up the childrens' dimensions (including spacing) in the stack direction.
@@ -308,7 +303,7 @@ static std::vector<ASStackUnpositionedItem> layoutChildrenAlongUnconstrainedStac
     const CGFloat exactStackDimension = ASRelativeDimensionResolve(flexBasis, stackDimension(style.direction, size));
 
     if (useOptimizedFlexing && isFlexibleInBothDirections(child)) {
-      return { child, [ASLayout layoutWithLayoutableObject:child size:{0, 0}] };
+      return { child, [ASLayout layoutWithLayoutableObject:child constrainedSizeRange:sizeRange size:{0, 0}] };
     } else {
       return {
         child,

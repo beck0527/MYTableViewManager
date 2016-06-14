@@ -3,13 +3,14 @@
 //  AsyncDisplayKit
 //
 //  Created by Luke on 1/25/16.
-//  Copyright © 2016 Facebook. All rights reserved.
+//
+//  Copyright (c) 2014-present, Facebook, Inc.  All rights reserved.
+//  This source code is licensed under the BSD-style license found in the
+//  LICENSE file in the root directory of this source tree. An additional grant
+//  of patent rights can be found in the PATENTS file in the same directory.
 //
 
-<<<<<<< HEAD
-=======
 NS_ASSUME_NONNULL_BEGIN
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
 
 @interface ASTextNode ()
 
@@ -17,27 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
  @abstract An array of descending scale factors that will be applied to this text node to try to make it fit within its constrained size
  @default nil (no scaling)
  */
-<<<<<<< HEAD
-@property (nonatomic, copy) NSArray *pointSizeScaleFactors;
-=======
 @property (nullable, nonatomic, copy) NSArray *pointSizeScaleFactors;
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
 
 #pragma mark - ASTextKit Customization
 /**
  A block to provide a hook to provide a custom NSLayoutManager to the ASTextKitRenderer
  */
-<<<<<<< HEAD
-@property (nonatomic, copy) NSLayoutManager * (^layoutManagerCreationBlock)(void);
-
-/**
- A block to provide a hook to provide a NSTextStorage to the Text Kit's layout manager.
- */
-@property (nonatomic, copy) NSTextStorage * (^textStorageCreationBlock)(NSAttributedString *attributedString);
-
-
-@end
-=======
 @property (nullable, nonatomic, copy) NSLayoutManager * (^layoutManagerCreationBlock)(void);
 
 /**
@@ -48,4 +34,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
->>>>>>> c56ed55589219127f1e061283ee5b1ef4cf3dad7
