@@ -530,6 +530,13 @@
     return item.editingStyle;
 }
 
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(tableView:editActionsForRowAtIndexPath:)]) {
+        return [self.delegate tableView:tableView editActionsForRowAtIndexPath:indexPath];
+    }
+    return nil;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Forward to UITableView delegate
