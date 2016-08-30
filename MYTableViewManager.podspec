@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MYTableViewManager"
-  s.version      = "0.1.5"
+  s.version      = "0.0.1"
   s.summary      = "TableView 管理器"
   s.homepage     = "https://github.com/TimeFaceCoder/MYTableViewManager"
   s.license = { :type => "MIT", :file => "LICENSE" }
