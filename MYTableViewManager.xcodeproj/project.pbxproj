@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70149F82E553218A45149F79 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8214EB23A5C62A97086B49E /* libPods.a */; };
+		0E58FCE55E1B22EBDDAADA6E /* libPods-MYTableViewManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 711FFB8ED373648CD34D5540 /* libPods-MYTableViewManager.a */; };
 		B09C3C4C1C203678009C6CF0 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B09C3C4A1C203678009C6CF0 /* data.plist */; };
 		B09C3C4F1C20369E009C6CF0 /* MYTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C3C4E1C20369E009C6CF0 /* MYTableViewManager.m */; };
 		B09C3C521C2037DF009C6CF0 /* MYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C3C511C2037DF009C6CF0 /* MYTableViewCell.m */; };
@@ -56,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		1BFDC92072BEE6A37309DEC8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		673E5EAFA34E465ED4CA771E /* Pods-MYTableViewManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYTableViewManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MYTableViewManager/Pods-MYTableViewManager.debug.xcconfig"; sourceTree = "<group>"; };
+		711FFB8ED373648CD34D5540 /* libPods-MYTableViewManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MYTableViewManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09C3C4A1C203678009C6CF0 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		B09C3C4D1C20369E009C6CF0 /* MYTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTableViewManager.h; sourceTree = "<group>"; };
 		B09C3C4E1C20369E009C6CF0 /* MYTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTableViewManager.m; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		B0F53C8B18F501C40028C4C6 /* MYTableViewManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MYTableViewManagerTests-Info.plist"; sourceTree = "<group>"; };
 		B0F53C8D18F501C40028C4C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B0F53C8F18F501C40028C4C6 /* MYTableViewManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MYTableViewManagerTests.m; sourceTree = "<group>"; };
+		CC21DCFF55AC4CB7866218A5 /* Pods-MYTableViewManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MYTableViewManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-MYTableViewManager/Pods-MYTableViewManager.release.xcconfig"; sourceTree = "<group>"; };
 		CCC8D403611837E57187AB80 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E8214EB23A5C62A97086B49E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,7 +122,7 @@
 				B0F53C6718F501C40028C4C6 /* CoreGraphics.framework in Frameworks */,
 				B0F53C6918F501C40028C4C6 /* UIKit.framework in Frameworks */,
 				B0F53C6518F501C40028C4C6 /* Foundation.framework in Frameworks */,
-				70149F82E553218A45149F79 /* libPods.a in Frameworks */,
+				0E58FCE55E1B22EBDDAADA6E /* libPods-MYTableViewManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +144,8 @@
 			children = (
 				1BFDC92072BEE6A37309DEC8 /* Pods.debug.xcconfig */,
 				CCC8D403611837E57187AB80 /* Pods.release.xcconfig */,
+				673E5EAFA34E465ED4CA771E /* Pods-MYTableViewManager.debug.xcconfig */,
+				CC21DCFF55AC4CB7866218A5 /* Pods-MYTableViewManager.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				B0F53C6818F501C40028C4C6 /* UIKit.framework */,
 				B0F53C8318F501C40028C4C6 /* XCTest.framework */,
 				E8214EB23A5C62A97086B49E /* libPods.a */,
+				711FFB8ED373648CD34D5540 /* libPods-MYTableViewManager.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,12 +289,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B0F53C9318F501C40028C4C6 /* Build configuration list for PBXNativeTarget "MYTableViewManager" */;
 			buildPhases = (
+				56B8741A7DC5C67F9945DB2F /* [CP] Check Pods Manifest.lock */,
 				0DC6C0EA845BF4EC032B7C4C /* Check Pods Manifest.lock */,
 				B0F53C5D18F501C40028C4C6 /* Sources */,
 				B0F53C5E18F501C40028C4C6 /* Frameworks */,
 				B0F53C5F18F501C40028C4C6 /* Resources */,
-				E005D9E1E74303E1DFCCCFAA /* Embed Pods Frameworks */,
-				3D97E2E27B075715180C5075 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,6 +331,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Melvin;
 				TargetAttributes = {
+					B0F53C6018F501C40028C4C6 = {
+						DevelopmentTeam = AA34382B49;
+					};
 					B0F53C8118F501C40028C4C6 = {
 						TestTargetID = B0F53C6018F501C40028C4C6;
 					};
@@ -395,34 +403,22 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3D97E2E27B075715180C5075 /* Copy Pods Resources */ = {
+		56B8741A7DC5C67F9945DB2F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MYTableViewManager-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E005D9E1E74303E1DFCCCFAA /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -569,10 +565,11 @@
 		};
 		B0F53C9418F501C40028C4C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BFDC92072BEE6A37309DEC8 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 673E5EAFA34E465ED4CA771E /* Pods-MYTableViewManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = AA34382B49;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MYTableViewManager/MYTableViewManager-Prefix.pch";
 				INFOPLIST_FILE = "MYTableViewManager/MYTableViewManager-Info.plist";
@@ -584,10 +581,11 @@
 		};
 		B0F53C9518F501C40028C4C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCC8D403611837E57187AB80 /* Pods.release.xcconfig */;
+			baseConfigurationReference = CC21DCFF55AC4CB7866218A5 /* Pods-MYTableViewManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = AA34382B49;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MYTableViewManager/MYTableViewManager-Prefix.pch";
 				INFOPLIST_FILE = "MYTableViewManager/MYTableViewManager-Info.plist";

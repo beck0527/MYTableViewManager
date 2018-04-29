@@ -1,41 +1,43 @@
 PODS:
-  - AsyncDisplayKit (1.9.80):
-    - AsyncDisplayKit/PINRemoteImage (= 1.9.80)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.80)
-  - AsyncDisplayKit/Core (1.9.80):
+  - AsyncDisplayKit (1.9.92):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.92)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.92)
+  - AsyncDisplayKit/Core (1.9.92):
     - AsyncDisplayKit/ASDealloc2MainObject
-  - AsyncDisplayKit/PINRemoteImage (1.9.80):
+  - AsyncDisplayKit/PINRemoteImage (1.9.92):
     - AsyncDisplayKit/Core
-    - PINRemoteImage/iOS (>= 3.0.0-beta.2)
-  - PINCache (2.2.2)
-  - PINRemoteImage/Core (3.0.0-beta.2):
-    - PINCache (>= 2.1)
-  - PINRemoteImage/iOS (3.0.0-beta.2):
+    - PINCache (= 3.0.1-beta)
+    - PINRemoteImage/iOS (= 3.0.0-beta.3)
+  - PINCache (3.0.1-beta)
+  - PINRemoteImage/Core (3.0.0-beta.3):
+    - PINCache (>= 3.0.0-beta)
+  - PINRemoteImage/iOS (3.0.0-beta.3):
     - PINRemoteImage/Core
-  - pop (1.0.9)
-  - YYKit (1.0.7):
-    - YYKit/no-arc (= 1.0.7)
-  - YYKit/no-arc (1.0.7)
+  - pop (1.0.10)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
-  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`)
+  - AsyncDisplayKit (~> 1.9.81)
   - pop
   - YYKit
 
-EXTERNAL SOURCES:
-  AsyncDisplayKit:
-    :git: https://github.com/facebook/AsyncDisplayKit.git
-
-CHECKOUT OPTIONS:
-  AsyncDisplayKit:
-    :commit: c857e809f41eea68eb78856a91dffe34aa8abaa2
-    :git: https://github.com/facebook/AsyncDisplayKit.git
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AsyncDisplayKit
+    - PINCache
+    - PINRemoteImage
+    - pop
+    - YYKit
 
 SPEC CHECKSUMS:
-  AsyncDisplayKit: ab57b10cd058797015c77be10407f3dc13027c85
-  PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
-  PINRemoteImage: 197554c5ba57a6ae90f5db441651180039fc9062
-  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  YYKit: 843d1b26e20b82c695790c9a89907eaa1e99907f
+  AsyncDisplayKit: 49d94f5739669d666ff7cdc3430f43f0b2cfbeaf
+  PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
+  PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 34338ad6a8f516966cfc4d5454900339de981878
+
+COCOAPODS: 1.5.0

@@ -10,11 +10,10 @@
 
 #import "ASInternalHelpers.h"
 
-#import <functional>
 #import <objc/runtime.h>
 
 #import "ASThread.h"
-#import "ASLayout.h"
+#import <tgmath.h>
 
 BOOL ASSubclassOverridesSelector(Class superclass, Class subclass, SEL selector)
 {
@@ -36,6 +35,9 @@ BOOL ASSubclassOverridesClassSelector(Class superclass, Class subclass, SEL sele
 
 void ASPerformBlockOnMainThread(void (^block)())
 {
+  if (block == nil){
+    return;
+  }
   if (ASDisplayNodeThreadIsMain()) {
     block();
   } else {
@@ -45,11 +47,25 @@ void ASPerformBlockOnMainThread(void (^block)())
 
 void ASPerformBlockOnBackgroundThread(void (^block)())
 {
+  if (block == nil){
+    return;
+  }
   if (ASDisplayNodeThreadIsMain()) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
   } else {
     block();
   }
+}
+
+void ASPerformBlockOnDeallocationQueue(void (^block)())
+{
+  static dispatch_queue_t queue;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    queue = dispatch_queue_create("org.AsyncDisplayKit.deallocationQueue", DISPATCH_QUEUE_SERIAL);
+  });
+  
+  dispatch_async(queue, block);
 }
 
 CGFloat ASScreenScale()
@@ -65,27 +81,20 @@ CGFloat ASScreenScale()
 
 CGFloat ASFloorPixelValue(CGFloat f)
 {
-  return floorf(f * ASScreenScale()) / ASScreenScale();
+  CGFloat scale = ASScreenScale();
+  return floor(f * scale) / scale;
 }
 
 CGFloat ASCeilPixelValue(CGFloat f)
 {
-  return ceilf(f * ASScreenScale()) / ASScreenScale();
+  CGFloat scale = ASScreenScale();
+  return ceil(f * scale) / scale;
 }
 
 CGFloat ASRoundPixelValue(CGFloat f)
 {
-  return roundf(f * ASScreenScale()) / ASScreenScale();
-}
-
-BOOL ASRunningOnOS7()
-{
-  static BOOL isOS7 = NO;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    isOS7 = ([[UIDevice currentDevice].systemVersion floatValue] < 8.0);
-  });
-  return isOS7;
+  CGFloat scale = ASScreenScale();
+  return round(f * scale) / scale;
 }
 
 @implementation NSIndexPath (ASInverseComparison)

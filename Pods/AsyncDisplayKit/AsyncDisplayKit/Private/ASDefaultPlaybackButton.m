@@ -51,7 +51,6 @@
 {
     NSDictionary* dict = (NSDictionary *)parameters;
     
-    
   ASDefaultPlaybackButtonType buttonType = [dict[@"buttonType"] intValue];
   UIColor *color = dict[@"color"];
 

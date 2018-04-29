@@ -37,7 +37,7 @@ typedef UIImage * _Nullable (^asimagenode_modification_block_t)(UIImage *image);
  * the layer's contentsCenter property.  Non-stretchable images work too, of
  * course.
  */
-@property (nullable, atomic, strong) UIImage *image;
+@property (nullable, nonatomic, strong) UIImage *image;
 
 /**
  @abstract The placeholder color.
@@ -133,7 +133,7 @@ typedef UIImage * _Nullable (^asimagenode_modification_block_t)(UIImage *image);
  * @discussion Set this to an object which conforms to ASAnimatedImageProtocol
  * to have the ASImageNode playback an animated image.
  */
-@property (nullable, atomic, strong) id <ASAnimatedImageProtocol> animatedImage;
+@property (nullable, nonatomic, strong) id <ASAnimatedImageProtocol> animatedImage;
 
 /**
  * @abstract Pause the playback of an animated image.
@@ -141,14 +141,16 @@ typedef UIImage * _Nullable (^asimagenode_modification_block_t)(UIImage *image);
  * @discussion Set to YES to pause playback of an animated image and NO to resume
  * playback.
  */
-@property (atomic, assign) BOOL animatedImagePaused;
+@property (nonatomic, assign) BOOL animatedImagePaused;
 
 /**
- * @abstract The runloop mode used to animte th image.
+ * @abstract The runloop mode used to animate the image.
  *
- * @discussion Defaults to NSDefaultRunLoopMode. Another commonly used mode is NSRunLoopCommonModes.
+ * @discussion Defaults to NSRunLoopCommonModes. Another commonly used mode is NSDefaultRunLoopMode.
+ * Setting NSDefaultRunLoopMode will cause animation to pause while scrolling (if the ASImageNode is
+ * in a scroll view), which may improve scroll performance in some use cases.
  */
-@property (atomic, strong) NSString *animatedImageRunLoopMode;
+@property (nonatomic, strong) NSString *animatedImageRunLoopMode;
 
 @end
 
