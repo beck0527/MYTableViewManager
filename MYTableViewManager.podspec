@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.source_files  = "MYTableViewManager/MYTableViewManager/**/*.{h,m,c}"
   s.requires_arc = true
   s.dependency 'pop'
-  s.dependency 'AsyncDisplayKit'
+  s.dependency 'AsyncDisplayKit', '~> 1.9.81'
 end
